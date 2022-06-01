@@ -1,0 +1,108 @@
+@import url(https://fonts.googleapis.com/css?family=Spartan:100,200,300,regular,500,700);
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: inherit;
+}
+
+:root {
+  --primary-color: #7c5dfa;
+  --primary-color-hover: #9277ff;
+  --secondary-color: #1e2139;
+  --secondary-color-hover: #252945;
+  --delete-color: #ec5757;
+  --delete-color-hover: #ff9797;
+  --draft-color: #dfe3fa;
+  --pending-color: #ff8f00;
+  --paid-color: #33d69f;
+  --btn-color: #ffffff;
+}
+
+.theme-dark {
+  --bg-color: #141625;
+  --nav-color: #1e2139;
+  --title-color: #ffffff;
+  --text-color: #dfe3fa;
+  --input-bg: #1e2139;
+  --input-border: #1e2139;
+  --input-border-hover: #9277ff;
+  --default-color: #f9fafe;
+  --default-color-hover: #dfe3fa;
+  --default-text: #7e88c3;
+  --default-text-hover: #7e88c3;
+  --item-color: #1e2139;
+  --modal-color: #141625;
+  --item-content-bg: var(--secondary-color-hover);
+  --item-footer-bg: #0c0e16;
+  --draft-color: #dfe3fa;
+  --user-bg: var(--secondary-color-hover);
+}
+
+.theme-light {
+  --bg-color: #f5f5fc;
+  --nav-color: #373b53;
+  --title-color: #0c0e16;
+  --text-color: #7e88c3;
+  --input-bg: #ffffff;
+  --input-border: #dfe3fa;
+  --input-border-hover: #9277ff;
+  --default-color: #f9fafe;
+  --default-color-hover: #dfe3fa;
+  --default-text: #7e88c3;
+  --default-text-hover: #7e88c3;
+  --item-color: #ffffff;
+  --modal-color: #ffffff;
+  --item-content-bg: #f5f6fc;
+  --item-footer-bg: #373b53;
+  --draft-color: #373b53;
+  --user-bg: white;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1;
+  font-family: "Spartan", sans-serif; //400 700
+}
+
+// utilities
+
+.ut-flex-container {
+  display: flex;
+  justify-content: center;
+}
+
+.ut-global-with {
+  width: 100%;
+  max-width: 74rem;
+
+  margin: 8rem 3.2rem;
+}
+
+// global button
+.btn {
+  border: none;
+  font-size: 1.2rem;
+  font-family: inherit;
+  font-weight: 700;
+  padding: 0.8rem 1rem;
+  border-radius: 2.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &--primary {
+    color: var(--btn-color);
+    background-color: var(--primary-color);
+
+    &:hover {
+      background-color: var(--primary-color-hover);
+    }
+  }
+}
