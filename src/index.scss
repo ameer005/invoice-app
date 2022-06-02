@@ -88,6 +88,13 @@ body {
   margin: 8rem 3.2rem;
 }
 
+.ut-global-with-m {
+  width: 100%;
+  max-width: 64rem;
+
+  margin: 8rem 3.2rem;
+}
+
 // global button
 .btn {
   border: none;
@@ -102,6 +109,36 @@ body {
   &--primary {
     color: var(--btn-color);
     background-color: var(--primary-color);
+
+    &:hover {
+      background-color: var(--primary-color-hover);
+    }
+  }
+
+  &--delete {
+    color: var(--btn-color);
+    background-color: var(--delete-color);
+    padding: 1.6rem 2.4rem;
+
+    &:hover {
+      background-color: var(--delete-color-hover);
+    }
+  }
+
+  &--edit {
+    color: var(--text-color);
+    background-color: var(--item-content-bg);
+    padding: 1.6rem 2.4rem;
+
+    &:hover {
+      background-color: var(--default-color);
+    }
+  }
+
+  &--paid {
+    color: var(--btn-color);
+    background-color: var(--primary-color);
+    padding: 1.6rem 2.4rem;
 
     &:hover {
       background-color: var(--primary-color-hover);

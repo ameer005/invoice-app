@@ -1,20 +1,197 @@
 .invoice_details_container {
-  // background-color: red;
   color: var(--text-color);
 }
 
 .top {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1.8rem;
+  padding: 2.4rem 2.4rem;
+  border-radius: var(--border-radius-m);
+  background-color: var(--item-color);
+
+  margin-bottom: 2.4rem;
 
   &__left_group {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
   }
 
   &__right_group {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
   }
 }
 
 .heading {
   font-size: 1.2rem;
+}
+
+.bottom {
+  border-radius: var(--border-radius-m);
+  background-color: var(--item-color);
+  padding: 2.4rem;
+  font-size: 1.2rem;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 4.8rem;
+
+  .description_box {
+  }
+
+  .sender_address {
+    grid-column: 3;
+    justify-self: end;
+    text-align: right;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .date_group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    grid-row: span 2;
+  }
+
+  .bill_to {
+    grid-row: span 2;
+  }
+
+  .item_container {
+    background-color: var(--item-content-bg);
+    padding: 3.2rem;
+  }
+
+  .footer {
+    grid-row: 4;
+    grid-column: 1 / -1;
+    border-radius: var(--border-radius-m);
+  }
+}
+
+// applied to both address
+.street {
+}
+
+.city {
+}
+
+.post_code {
+}
+
+.country {
+}
+
+.id {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--title-color);
+
+  margin-bottom: 0.8rem;
+
+  span {
+    color: var(--primary-color);
+  }
+}
+
+.description {
+}
+
+.small_heading {
+  margin-bottom: 1rem;
+}
+
+.common_info {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--title-color);
+
+  margin-bottom: 1.2rem;
+}
+
+.date {
+}
+
+.client_address {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.client_name {
+}
+
+// items
+
+.items_grid {
+  display: grid;
+  grid-template-columns: 40fr 20fr 20fr 20fr;
+
+  gap: 4rem;
+}
+
+.item_list {
+  grid-column: 1 / -1;
+}
+
+.item_name {
+}
+
+.quantity_name {
+  justify-self: center;
+}
+
+.price_name {
+  justify-self: center;
+}
+
+.total_name {
+  justify-self: end;
+}
+
+.name {
+  color: var(--title-color);
+  font-weight: 700;
+}
+
+.quantity {
+  font-weight: 700;
+  justify-self: center;
+}
+
+.price {
+  font-weight: 700;
+  justify-self: center;
+}
+
+.total {
+  justify-self: end;
+  color: var(--title-color);
+  font-weight: 700;
+}
+
+.grand_total_box {
+  background-color: var(--item-footer-bg);
+  padding: 3.2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.deu {
+  color: var(--title-color);
+  font-weight: 700;
+}
+
+.deu_amount {
+  font-size: 2.4rem;
+  color: var(--title-color);
+  font-weight: 700;
 }

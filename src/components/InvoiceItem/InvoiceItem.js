@@ -6,6 +6,7 @@ import styles from "./InvoiceItem.module.scss";
 import currencyFormatter from "../../utils/currencyFormatter";
 import dateFormatter from "../../utils/dateFormatter";
 import arrowRight from "../../assets/icons/icon-arrow-right.svg";
+import StatusIndicator from "../../StatusIndicator/StatusIndicator";
 
 const InvoiceItem = ({ data }) => {
   const navigate = useNavigate();
@@ -30,12 +31,7 @@ const InvoiceItem = ({ data }) => {
           {currencyFormatter.format(data.total)}
         </div>
         <div className={styles.right_container}>
-          <div className={`status_box status_box--${data.status}`}>
-            <span className={`circle circle--${data.status}`}></span>
-            <div className={`status status--${data.status}`}>
-              {data.status[0].toUpperCase() + data.status.slice(1)}
-            </div>
-          </div>
+          <StatusIndicator data={data} />
           <img
             className={styles.arrowRight}
             src={arrowRight}

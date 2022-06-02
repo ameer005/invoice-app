@@ -15,7 +15,7 @@ const dateFormatter = (inputDate) => {
   ];
   const date = new Date(inputDate);
 
-  return `${String(date.getDay()).padStart(2, 0)} ${
+  return `${String(date.getDate()).padStart(2, 0)} ${
     months[date.getMonth()]
   } ${date.getFullYear()}`;
 };
