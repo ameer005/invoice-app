@@ -1,0 +1,59 @@
+.item_container {
+  background-color: var(--item-color);
+  padding: 1.8rem 2.4rem;
+  border-radius: var(--border-radius-m);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:hover {
+    border: 1px solid var(--primary-color);
+  }
+}
+
+.left_box {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 4.8rem;
+}
+
+.id {
+  font-weight: 700;
+  color: var(--title-color);
+
+  span {
+    color: var(--default-text);
+  }
+}
+
+.due_date {
+}
+
+.client_name {
+  color: var(--title-color);
+}
+
+.right_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.8rem;
+}
+
+.right_box {
+  font-size: 1.2rem;
+  align-items: center;
+  display: flex;
+  gap: 4.8rem;
+}
+
+.amount {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--title-color);
+}

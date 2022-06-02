@@ -20,6 +20,8 @@
   --pending-color: #ff8f00;
   --paid-color: #33d69f;
   --btn-color: #ffffff;
+
+  --border-radius-m: 0.9rem;
 }
 
 .theme-dark {
@@ -104,5 +106,61 @@ body {
     &:hover {
       background-color: var(--primary-color-hover);
     }
+  }
+}
+
+// STATUS
+.status_box {
+  width: 10.8rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 1.4rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  background-color: red;
+  border-radius: var(--border-radius-m);
+  &--paid {
+    background-color: rgba(51, 214, 160, 0.06);
+  }
+
+  &--pending {
+    background-color: rgb(255, 143, 0, 0.06);
+  }
+
+  &--draft {
+    background-color: rgb(223, 227, 250, 0.06);
+  }
+}
+
+.circle {
+  width: 0.8rem;
+  height: 0.8rem;
+
+  border-radius: 50%;
+  &--paid {
+    background-color: var(--paid-color);
+  }
+
+  &--pending {
+    background-color: var(--pending-color);
+  }
+
+  &--draft {
+    background-color: var(--draft-color);
+  }
+}
+
+.status {
+  &--paid {
+    color: var(--paid-color);
+  }
+
+  &--pending {
+    color: var(--pending-color);
+  }
+
+  &--draft {
+    color: var(--draft-color);
   }
 }

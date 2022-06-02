@@ -1,9 +1,15 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
 import styles from "./HomePage.module.scss";
+
 import arrowDown from "../../assets/icons/icon-arrow-down.svg";
 import plusIcon from "../../assets/icons/icon-plus.svg";
+import InvoiceList from "../../components/InvoiceList/InvoiceList";
 
 const Homepage = () => {
+  const data = useSelector((state) => state.invoices.invoices);
+
   return (
     <div className="ut-flex-container">
       <div className={`${styles.invoice_container} ut-global-with`}>
@@ -13,16 +19,12 @@ const Homepage = () => {
             <h1 className={styles.app_name}>Invoices</h1>
             <p
               className={styles.quantity}
-            >{`There are ${7} total invoices.`}</p>
+            >{`There are ${data.length} total invoices.`}</p>
           </div>
           <div className={styles.filter_box}>
             <div className={styles.dropdown_btn}>
               <span>Filter by status</span>
-              <img
-                className={`${styles.icon} ${styles.icon__arrow_down}`}
-                src={arrowDown}
-                alt="arrow down"
-              />
+              <img className="arrow" src={arrowDown} alt="arrow down" />
             </div>
           </div>
           <button className={`${styles.btn_add} btn btn--primary`}>
@@ -34,7 +36,9 @@ const Homepage = () => {
         </div>
 
         {/* invoices List */}
-        <div className={styles.bottom}>bottom</div>
+        <div className={styles.bottom}>
+          <InvoiceList />
+        </div>
       </div>
     </div>
   );
