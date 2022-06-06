@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import styles from "./InvoicePage.module.scss";
 
 import GoBackButton from "../../components/GoBackButton/GoBackButton";
-import StatusIndicator from "../../StatusIndicator/StatusIndicator";
+import StatusIndicator from "../../components/StatusIndicator/StatusIndicator";
 import dateFormatter from "../../utils/dateFormatter";
 import currencyFormatter from "../../utils/currencyFormatter";
 

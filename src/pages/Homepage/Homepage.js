@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 import styles from "./HomePage.module.scss";
@@ -9,6 +9,7 @@ import InvoiceList from "../../components/InvoiceList/InvoiceList";
 
 const Homepage = () => {
   const data = useSelector((state) => state.invoices.invoices);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   return (
     <div className="ut-flex-container">
@@ -22,11 +23,42 @@ const Homepage = () => {
             >{`There are ${data.length} total invoices.`}</p>
           </div>
           <div className={styles.filter_box}>
-            <div className={styles.dropdown_btn}>
+            {/* filter dropdown */}
+            <div
+              onClick={() => setShowDropdown((prev) => !prev)}
+              className={`${styles.dropdown_btn} `}
+            >
               <span>Filter by status</span>
               <img className="arrow" src={arrowDown} alt="arrow down" />
+              {/* filter paid */}
+              <div
+                className={`${styles.dropdown_menu} ${
+                  showDropdown ? styles.dropdown_toggle : ""
+                }`}
+              >
+                <div className={styles.filter_option}>
+                  <div
+                    className={`${styles.filter_checkbox} ${styles.active}`}
+                  ></div>
+                  <p className={styles.filter_name}>Paid</p>
+                </div>
+
+                {/* filter pending */}
+                <div className={styles.filter_option}>
+                  <div className={styles.filter_checkbox}></div>
+                  <p className={styles.filter_name}>Pending</p>
+                </div>
+
+                {/* Filter Draft */}
+                <div className={styles.filter_option}>
+                  <div className={styles.filter_checkbox}></div>
+                  <p className={styles.filter_name}>Draft</p>
+                </div>
+              </div>
             </div>
           </div>
+
+          {/* Add button */}
           <button className={`${styles.btn_add} btn btn--primary`}>
             <div className={styles.icon_box}>
               <img className={styles.plus_icon} src={plusIcon} alt="plus" />

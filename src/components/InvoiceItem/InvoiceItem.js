@@ -6,7 +6,7 @@ import styles from "./InvoiceItem.module.scss";
 import currencyFormatter from "../../utils/currencyFormatter";
 import dateFormatter from "../../utils/dateFormatter";
 import arrowRight from "../../assets/icons/icon-arrow-right.svg";
-import StatusIndicator from "../../StatusIndicator/StatusIndicator";
+import StatusIndicator from "../StatusIndicator/StatusIndicator";
 
 const InvoiceItem = ({ data }) => {
   const navigate = useNavigate();
