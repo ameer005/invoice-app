@@ -17,7 +17,18 @@ const initialState = {
 const invoiceSlice = createSlice({
   name: "invoices",
   initialState,
-  reducers: {},
+  reducers: {
+    deleteInvoice: (state, { payload }) => {
+      state.invoices = state.invoices.filter(
+        (invoice) => invoice.id !== payload
+      );
+    },
+    MarkAsPaid: (state, { payload }) => {
+      state.invoices.forEach((invoice) => {
+        if (invoice.id === payload) invoice.status = "paid";
+      });
+    },
+  },
   extraReducers: {
     [fetchInvoices.fulfilled]: (state, { payload }) => {
       state.invoices = payload;
@@ -25,4 +36,5 @@ const invoiceSlice = createSlice({
   },
 });
 
+export const { deleteInvoice, MarkAsPaid } = invoiceSlice.actions;
 export default invoiceSlice.reducer;

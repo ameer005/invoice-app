@@ -1,8 +1,11 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import styles from "./InvoicePage.module.scss";
+
+import { deleteInvoice, MarkAsPaid } from "../../features/invoice/invoiceSlice";
 
 import GoBackButton from "../../components/GoBackButton/GoBackButton";
 import StatusIndicator from "../../components/StatusIndicator/StatusIndicator";
@@ -14,8 +17,19 @@ const InvoicePage = () => {
   const [data] = useSelector((state) =>
     state.invoices.invoices.filter((invoice) => invoice.id === id)
   );
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   if (!data) return;
+
+  const OnDeleteInvoice = () => {
+    dispatch(deleteInvoice(id));
+    navigate(-1);
+  };
+
+  const onClickPaid = () => {
+    dispatch(MarkAsPaid(id));
+  };
 
   const renderItems = () => {
     return data.items.map((item, index) => {
@@ -53,9 +67,13 @@ const InvoicePage = () => {
           </div>
           <div className={styles.top__right_group}>
             <button className="btn btn--edit">Edit</button>
-            <button className="btn btn--delete">Delete</button>
+            <button className="btn btn--delete" onClick={OnDeleteInvoice}>
+              Delete
+            </button>
             {data.status !== "paid" && (
-              <button className="btn btn--paid">Mark As Paid</button>
+              <button onClick={onClickPaid} className="btn btn--paid">
+                Mark As Paid
+              </button>
             )}
           </div>
         </div>
