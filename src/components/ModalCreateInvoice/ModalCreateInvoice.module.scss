@@ -13,11 +13,160 @@
 .modal {
   position: relative;
   flex: 1;
-  max-width: 60rem;
+  max-width: 65rem;
   min-height: 100%;
-  padding: 3.2rem;
-  margin-left: 11rem;
+  padding: 5rem 3.2rem 4.8rem 6.4rem;
+  margin-left: 10rem;
+  border-top-right-radius: 2.5rem;
+  border-bottom-right-radius: 2.5rem;
 
-  background-color: white;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.form_heading {
+  color: var(--title-color);
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 4.8rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_body {
+  // flex: 1;
+
+  height: 47rem;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.form_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 2.8rem;
+  row-gap: 2.4rem;
+
+  margin-bottom: 3.2rem;
+}
+
+.input_container {
+  // section 1
+  &__1_1 {
+    grid-column: 1 / -1;
+  }
+
+  &__1_2 {
+  }
+
+  &__1_3 {
+  }
+
+  &__1_4 {
+  }
+
+  // section 2
+  &__2_1 {
+    grid-column: 1 / -1;
+  }
+
+  &__2_2 {
+    grid-column: 1 / -1;
+  }
+
+  &__2_3 {
+    grid-column: 1 / -1;
+  }
+
+  &__2_4 {
+  }
+
+  &__2_7 {
+    margin-top: 1.4rem;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.8rem;
+  }
+
+  &__2_9 {
+    grid-column: 1 / -1;
+  }
+}
+
+.label {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.input {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  color: var(--text-color);
+  font-weight: 700;
   border-radius: 0.5rem;
+  background-color: var(--input-bg);
+  border: 1px solid transparent;
+  outline: none;
+  transition: all 0.2s;
+
+  &:focus {
+    border: 1px solid var(--primary-color);
+  }
+}
+
+.sub_heading {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 2.4rem;
+}
+
+.items_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.items_heading {
+  font-size: 1.8rem;
+  color: var(--text-color);
+
+  margin-bottom: 1.2rem;
+}
+
+.btn_add_item {
+  &:hover {
+    background-color: var(--input-bg);
+  }
+}
+
+.form_buttons {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  padding: 4.8rem 0;
+}
+
+.btn_discard {
+}
+
+.btn_draft {
+  margin-left: auto;
+
+  &:hover {
+    background-color: var(--input-bg);
+  }
+}
+
+.btn_send {
+  padding: 1.6rem 2.4rem;
 }
