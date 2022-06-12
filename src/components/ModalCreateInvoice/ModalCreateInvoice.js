@@ -1,18 +1,13 @@
 import React, { useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useForm, useFieldArray } from "react-hook-form";
+
+import { Formik, Form, FieldArray } from "formik";
 
 import styles from "./ModalCreateInvoice.module.scss";
 
 const ModalCreateInvoice = (props) => {
   const [startDate, setStartDate] = useState(new Date());
-  const [register, control] = useForm();
-
-  const [fields, append, remove] = useFieldArray({
-    control,
-    name: "items",
-  });
 
   return (
     <div onClick={() => props.setShowModal(false)} className={styles.backdrop}>
@@ -55,6 +50,7 @@ const ModalCreateInvoice = (props) => {
 
             {/* section 2 */}
             <h3 className={styles.sub_heading}>Bill To</h3>
+            {/* CLIENT DETAILS */}
             <section className={styles.form_grid}>
               <label
                 className={`${styles.input_container} ${styles.input_container__2_1}`}
@@ -108,6 +104,7 @@ const ModalCreateInvoice = (props) => {
                   />
                 </label>
 
+                {/* Payment terms */}
                 <label
                   className={`${styles.input_container} ${styles.input_container__2_8}`}
                 >
@@ -129,6 +126,7 @@ const ModalCreateInvoice = (props) => {
               </label>
             </section>
 
+            {/* DYNAMIC FORM */}
             <section className={styles.items_container}>
               <h3 className={styles.items_heading}>Item List</h3>
               <button
@@ -142,7 +140,10 @@ const ModalCreateInvoice = (props) => {
 
           {/* BUTTONS */}
           <div className={styles.form_buttons}>
-            <button className={`btn btn--edit ${styles.btn_discard}`}>
+            <button
+              type="button"
+              className={`btn btn--edit ${styles.btn_discard}`}
+            >
               Discard
             </button>
             <button className={`btn btn--edit ${styles.btn_draft}`}>
