@@ -134,6 +134,19 @@
 .items_container {
   display: flex;
   flex-direction: column;
+  gap: 1.8rem;
+}
+
+.items {
+  display: grid;
+  grid-template-columns: 40fr 15fr 15fr 20fr 10fr;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.icon_delete {
+  display: block;
+  cursor: pointer;
 }
 
 .items_heading {
@@ -144,6 +157,7 @@
 }
 
 .btn_add_item {
+  margin-top: 1.8rem;
   &:hover {
     background-color: var(--input-bg);
   }
@@ -169,4 +183,8 @@
 
 .btn_send {
   padding: 1.6rem 2.4rem;
+}
+
+.input_error {
+  border: 1px solid var(--delete-color);
 }
