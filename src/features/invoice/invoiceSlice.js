@@ -29,7 +29,6 @@ const invoiceSlice = createSlice({
       });
     },
     addInvoice: (state, { payload }) => {
-      console.log(payload);
       state.invoices.unshift(payload);
     },
   },

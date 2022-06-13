@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import dayjs from "dayjs";
 
 import { Formik, Form, FieldArray, Field } from "formik";
 import validationSchema from "../../utils/YupSchema";
@@ -19,8 +20,8 @@ const ModalCreateInvoice = (props) => {
 
   const initialValues = {
     id: "",
-    createdAt: currentDate,
-    PaymentDue: currentDate,
+    createdAt: dayjs().format("YYYY/MM/DD"),
+    paymentDue: currentDate,
     description: "",
     paymentTerms: "",
     clientName: "",
@@ -52,16 +53,17 @@ const ModalCreateInvoice = (props) => {
       return totalAmt;
     };
 
-    console.log();
-
     dispatch(
       addInvoice({
         ...values,
         total: total(),
         status: statusVal,
         id: idGenrator(),
+        paymentDue: dayjs(values.paymentDue).format("YYYY/MM/DD"),
       })
     );
+
+    props.setShowModal(false);
   };
 
   return (
@@ -238,7 +240,7 @@ const ModalCreateInvoice = (props) => {
                   <div className={styles.input_container__2_7}>
                     <label className={`${styles.input_container}`}>
                       <span className={styles.label}>Invoice Date</span>
-                      <Field name="PaymentDue">
+                      <Field name="paymentDue">
                         {({ form, field }) => {
                           //programticaly set values
                           const { setFieldValue } = form;
@@ -249,7 +251,7 @@ const ModalCreateInvoice = (props) => {
                               className={`${styles.input}`}
                               selected={value}
                               onChange={(val) =>
-                                setFieldValue("PaymentDue", val)
+                                setFieldValue("paymentDue", val)
                               }
                             />
                           );
