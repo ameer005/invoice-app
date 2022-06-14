@@ -14,7 +14,7 @@ function App() {
     dispatch(fetchInvoices());
   }, [dispatch]);
   return (
-    <div className={`${styles.app} theme-dark`}>
+    <div className={`${styles.app}`}>
       <header className={styles.header}>
         <NavBar />
       </header>

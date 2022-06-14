@@ -11,6 +11,9 @@ import GoBackButton from "../../components/GoBackButton/GoBackButton";
 import StatusIndicator from "../../components/StatusIndicator/StatusIndicator";
 import dateFormatter from "../../utils/dateFormatter";
 import currencyFormatter from "../../utils/currencyFormatter";
+import { useState } from "react";
+
+import ModalCreateInvoice from "../../components/ModalCreateInvoice/ModalCreateInvoice";
 
 const InvoicePage = () => {
   const { id } = useParams();
@@ -19,6 +22,7 @@ const InvoicePage = () => {
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
 
   if (!data) return;
 
@@ -66,7 +70,12 @@ const InvoicePage = () => {
             <StatusIndicator data={data} />
           </div>
           <div className={styles.top__right_group}>
-            <button className="btn btn--edit">Edit</button>
+            <button
+              onClick={() => setShowModal(true)}
+              className="btn btn--edit"
+            >
+              Edit
+            </button>
             <button className="btn btn--delete" onClick={OnDeleteInvoice}>
               Delete
             </button>
@@ -157,6 +166,10 @@ const InvoicePage = () => {
           </div>
         </div>
       </div>
+
+      {showModal && (
+        <ModalCreateInvoice setShowModal={setShowModal} data={data} />
+      )}
     </div>
   );
 };

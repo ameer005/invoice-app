@@ -10,7 +10,7 @@ import validationSchema from "../../utils/YupSchema";
 import styles from "./ModalCreateInvoice.module.scss";
 import trashicon from "../../assets/icons/icon-delete.svg";
 import idGenrator from "../../utils/idGenrator";
-import { addInvoice } from "../../features/invoice/invoiceSlice";
+import { addInvoice, updateInvoice } from "../../features/invoice/invoiceSlice";
 
 const ModalCreateInvoice = (props) => {
   const [statusVal, setStatusVal] = useState("pending");
@@ -19,28 +19,28 @@ const ModalCreateInvoice = (props) => {
   const currentDate = new Date();
 
   const initialValues = {
-    id: "",
+    id: props.data ? props.data.id : "",
     createdAt: dayjs().format("YYYY/MM/DD"),
-    paymentDue: currentDate,
-    description: "",
-    paymentTerms: "",
-    clientName: "",
-    clientEmail: "",
-    status: "",
+    paymentDue: props.data ? new Date(props.data.paymentDue) : currentDate,
+    description: props.data ? props.data.description : "",
+    paymentTerms: props.data ? props.data.paymentTerms : "",
+    clientName: props.data ? props.data.clientName : "",
+    clientEmail: props.data ? props.data.clientEmail : "",
+    status: props.data ? props.data.status : "",
     senderAddress: {
-      street: "",
-      city: "",
-      postCode: "",
-      country: "",
+      street: props.data ? props.data.senderAddress.street : "",
+      city: props.data ? props.data.senderAddress.city : "",
+      postCode: props.data ? props.data.senderAddress.postCode : "",
+      country: props.data ? props.data.senderAddress.country : "",
     },
     clientAddress: {
-      street: "",
-      city: "",
-      postCode: "",
-      country: "",
+      street: props.data ? props.data.clientAddress.street : "",
+      city: props.data ? props.data.clientAddress.city : "",
+      postCode: props.data ? props.data.clientAddress.postCode : "",
+      country: props.data ? props.data.clientAddress.country : "",
     },
-    items: [],
-    total: 0,
+    items: props.data ? props.data.items : [],
+    total: props.data ? props.data.total : 0,
   };
 
   const onSubmit = (values) => {
@@ -53,15 +53,28 @@ const ModalCreateInvoice = (props) => {
       return totalAmt;
     };
 
-    dispatch(
-      addInvoice({
-        ...values,
-        total: total(),
-        status: statusVal,
-        id: idGenrator(),
-        paymentDue: dayjs(values.paymentDue).format("YYYY/MM/DD"),
-      })
-    );
+    if (!props.data) {
+      dispatch(
+        addInvoice({
+          ...values,
+          total: total(),
+          status: statusVal,
+          id: idGenrator(),
+          paymentDue: dayjs(values.paymentDue).format("YYYY/MM/DD"),
+        })
+      );
+    } else {
+      dispatch(
+        updateInvoice({
+          ...values,
+          total: total(),
+          status: statusVal,
+          id: props.data.id,
+          paymentDue: dayjs(values.paymentDue).format("YYYY/MM/DD"),
+          status: props.data.status,
+        })
+      );
+    }
 
     props.setShowModal(false);
   };
@@ -122,7 +135,7 @@ const ModalCreateInvoice = (props) => {
                         errors.senderAddress?.postCode &&
                         styles.input_error
                       }`}
-                      type="number"
+                      type="text"
                       name="senderAddress.postCode"
                     />
                   </label>
@@ -217,7 +230,7 @@ const ModalCreateInvoice = (props) => {
                         errors.clientAddress?.postCode &&
                         styles.input_error
                       }`}
-                      type="number"
+                      type="text"
                       name="clientAddress.postCode"
                     />
                   </label>
@@ -400,17 +413,23 @@ const ModalCreateInvoice = (props) => {
                 >
                   Discard
                 </button>
-                <button
-                  onClick={() => setStatusVal("draft")}
-                  className={`btn btn--edit ${styles.btn_draft}`}
-                >
-                  Save as Draft
-                </button>
+
+                {!props.data && (
+                  <button
+                    onClick={() => setStatusVal("draft")}
+                    className={`btn btn--edit ${styles.btn_draft}`}
+                  >
+                    Save as Draft
+                  </button>
+                )}
+
                 <button
                   type="submit"
-                  className={`btn btn--primary ${styles.btn_send}`}
+                  className={`btn btn--primary ${styles.btn_send} ${
+                    props.data && styles.mar
+                  }`}
                 >
-                  Save & Send
+                  {!props.data ? `Save & Send` : "Save Changes"}
                 </button>
               </div>
             </Form>

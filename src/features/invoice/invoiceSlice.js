@@ -31,6 +31,11 @@ const invoiceSlice = createSlice({
     addInvoice: (state, { payload }) => {
       state.invoices.unshift(payload);
     },
+    updateInvoice: (state, { payload }) => {
+      state.invoices.forEach((invoice, index) => {
+        if (invoice.id === payload.id) state.invoices[index] = payload;
+      });
+    },
   },
   extraReducers: {
     [fetchInvoices.fulfilled]: (state, { payload }) => {
@@ -39,5 +44,6 @@ const invoiceSlice = createSlice({
   },
 });
 
-export const { deleteInvoice, MarkAsPaid, addInvoice } = invoiceSlice.actions;
+export const { deleteInvoice, MarkAsPaid, addInvoice, updateInvoice } =
+  invoiceSlice.actions;
 export default invoiceSlice.reducer;
