@@ -1,3 +1,5 @@
+@import "../../common/mixins.scss";
+
 .invoice_container {
   color: var(--text-color);
 }
@@ -8,6 +10,10 @@
   display: flex;
   align-items: center;
   gap: 4.8rem;
+
+  @include respond(phone) {
+    gap: 2.4rem;
+  }
 }
 
 .name_box {
@@ -19,10 +25,24 @@
   color: var(--title-color);
 
   margin-bottom: 1.2rem;
+
+  @include respond(tab-pot) {
+    font-size: 2rem;
+  }
 }
 
 .quantity {
   font-size: 1.2rem;
+
+  @include respond(phone) {
+    font-size: 1rem;
+  }
+}
+
+.by_status {
+  @include respond(tab-pot) {
+    display: none;
+  }
 }
 
 .filter_box {
@@ -123,6 +143,12 @@
   display: flex;
   align-items: center;
   gap: 1.4rem;
+}
+
+.new_invoice {
+  @include respond(tab-pot) {
+    display: none;
+  }
 }
 
 .icon_box {

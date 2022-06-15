@@ -33,7 +33,7 @@ const InvoiceItem = ({ data }) => {
         <div className={styles.right_container}>
           <StatusIndicator data={data} />
           <img
-            className={styles.arrowRight}
+            className={styles.arrow_right}
             src={arrowRight}
             alt="arrow right"
           />

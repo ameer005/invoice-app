@@ -42,7 +42,9 @@ const Homepage = () => {
               onClick={() => setShowDropdown((prev) => !prev)}
               className={`${styles.dropdown_btn} `}
             >
-              <span>{`Filter by status`}</span>
+              <span>
+                Filter <span className={styles.by_status}>by status</span>
+              </span>
               <img className="arrow" src={arrowDown} alt="arrow down" />
             </div>
             {/* filter dropdown */}
@@ -91,7 +93,9 @@ const Homepage = () => {
             <div className={styles.icon_box}>
               <img className={styles.plus_icon} src={plusIcon} alt="plus" />
             </div>
-            <span>New Invoice</span>
+            <span>
+              New <span className={styles.new_invoice}> Invoice </span>
+            </span>
           </button>
         </div>
 

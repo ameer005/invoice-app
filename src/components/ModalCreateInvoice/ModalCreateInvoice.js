@@ -315,7 +315,9 @@ const ModalCreateInvoice = (props) => {
                         {form.values.items.map((item, index) => {
                           return (
                             <div key={index} className={styles.items}>
-                              <label className={`${styles.input_container}`}>
+                              <label
+                                className={`${styles.input_item_container} ${styles.input_item_container__1}`}
+                              >
                                 <span className={styles.label}>Item Name</span>
                                 <Field
                                   className={styles.input}
@@ -324,7 +326,9 @@ const ModalCreateInvoice = (props) => {
                                 />
                               </label>
 
-                              <label className={`${styles.input_container}`}>
+                              <label
+                                className={`${styles.input_item_container} ${styles.input_item_container__2}`}
+                              >
                                 <span className={styles.label}>Qty.</span>
                                 <Field
                                   className={styles.input}
@@ -344,7 +348,9 @@ const ModalCreateInvoice = (props) => {
                                 />
                               </label>
 
-                              <label className={`${styles.input_container}`}>
+                              <label
+                                className={`${styles.input_item_container} ${styles.input_item_container__3}`}
+                              >
                                 <span className={styles.label}>Price</span>
                                 <Field
                                   className={styles.input}
@@ -365,7 +371,9 @@ const ModalCreateInvoice = (props) => {
                                 />
                               </label>
 
-                              <label className={`${styles.input_container}`}>
+                              <label
+                                className={`${styles.input_item_container} ${styles.input_item_container__4}`}
+                              >
                                 <span className={styles.label}>Total</span>
                                 <Field
                                   disabled
@@ -403,11 +411,20 @@ const ModalCreateInvoice = (props) => {
                     )}
                   </FieldArray>
                 </section>
+
+                {/* <div
+                  className={`${styles.error_text} ${
+                    errors ? styles.error_active : ""
+                  }`}
+                >
+                  -All fields must be filled.
+                </div> */}
               </div>
 
               {/* BUTTONS */}
               <div className={styles.form_buttons}>
                 <button
+                  onClick={() => props.setShowModal(false)}
                   type="button"
                   className={`btn btn--edit ${styles.btn_discard}`}
                 >
