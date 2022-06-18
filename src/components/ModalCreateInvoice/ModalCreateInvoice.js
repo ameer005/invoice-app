@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import dayjs from "dayjs";
+import { motion } from "framer-motion";
 
 import { Formik, Form, FieldArray, Field } from "formik";
 import validationSchema from "../../utils/YupSchema";
@@ -80,8 +81,22 @@ const ModalCreateInvoice = (props) => {
   };
 
   return (
-    <div onClick={() => props.setShowModal(false)} className={styles.backdrop}>
-      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      onClick={() => props.setShowModal(false)}
+      className={styles.backdrop}
+    >
+      <motion.div
+        initial={{ x: "-80vw" }}
+        animate={{ x: 0 }}
+        exit={{ x: "-80vw" }}
+        transition={{ duration: 0.3 }}
+        className={styles.modal}
+        onClick={(e) => e.stopPropagation()}
+      >
         <Formik
           initialValues={initialValues}
           onSubmit={onSubmit}
@@ -452,8 +467,8 @@ const ModalCreateInvoice = (props) => {
             </Form>
           )}
         </Formik>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

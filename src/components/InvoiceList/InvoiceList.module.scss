@@ -1,5 +1,33 @@
+@import "../../common/mixins.scss";
+
 .invoice_list {
   display: flex;
   flex-direction: column;
   gap: 1.8rem;
+}
+
+.empty_img {
+  margin-bottom: 3.2rem;
+
+  @include respond(phone-min) {
+    width: 20rem;
+  }
+}
+
+.empty_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.empty_heading {
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.empty_text {
+  font-size: 1.2rem;
+  line-height: 1.4;
 }

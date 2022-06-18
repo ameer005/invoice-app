@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import styles from "./HomePage.module.scss";
 
@@ -27,7 +29,13 @@ const Homepage = () => {
   };
 
   return (
-    <div className="ut-flex-container">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.8 }}
+      className="ut-flex-container"
+    >
       <div className={`${styles.invoice_container} ut-global-with`}>
         {/* header */}
         <div className={styles.top}>
@@ -43,7 +51,7 @@ const Homepage = () => {
               className={`${styles.dropdown_btn} `}
             >
               <span>
-                Filter <span className={styles.by_status}>by status</span>
+                Filter <span className={styles.by_status}>{`by status`}</span>
               </span>
               <img className="arrow" src={arrowDown} alt="arrow down" />
             </div>
@@ -101,11 +109,13 @@ const Homepage = () => {
 
         {/* invoices List */}
         <div className={styles.bottom}>
-          <InvoiceList />
+          <InvoiceList filter={filter} />
         </div>
       </div>
-      {showModal && <ModalCreateInvoice setShowModal={setShowModal} />}
-    </div>
+      <AnimatePresence exitBeforeEnter>
+        {showModal && <ModalCreateInvoice setShowModal={setShowModal} />}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 

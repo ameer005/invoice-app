@@ -2,6 +2,7 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { motion } from "framer-motion";
 
 import styles from "./InvoicePage.module.scss";
 
@@ -60,7 +61,13 @@ const InvoicePage = () => {
   };
 
   return (
-    <div className="ut-flex-container">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.8 }}
+      className="ut-flex-container"
+    >
       <div className={`${styles.invoice_details_container} ut-global-with-m`}>
         <GoBackButton />
         {/* TOP */}
@@ -170,7 +177,7 @@ const InvoicePage = () => {
       {showModal && (
         <ModalCreateInvoice setShowModal={setShowModal} data={data} />
       )}
-    </div>
+    </motion.div>
   );
 };
 
