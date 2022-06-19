@@ -1,8 +1,30 @@
 import { configureStore } from "@reduxjs/toolkit";
 import invoiceReducer from "./invoice/invoiceSlice";
+import {
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
+
+const persistConfig = {
+  key: "root",
+  version: 1,
+  storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, invoiceReducer);
 
 export const store = configureStore({
-  reducer: {
-    invoices: invoiceReducer,
-  },
+  reducer: { invoices: persistedReducer },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });

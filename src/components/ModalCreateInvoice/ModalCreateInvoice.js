@@ -8,6 +8,8 @@ import { motion } from "framer-motion";
 import { Formik, Form, FieldArray, Field } from "formik";
 import validationSchema from "../../utils/YupSchema";
 
+import arrowDown from "../../assets/icons/icon-arrow-down.svg";
+
 import styles from "./ModalCreateInvoice.module.scss";
 import trashicon from "../../assets/icons/icon-delete.svg";
 import idGenrator from "../../utils/idGenrator";
@@ -292,16 +294,25 @@ const ModalCreateInvoice = (props) => {
                       className={`${styles.input_container} ${styles.input_container__2_8}`}
                     >
                       <span className={styles.label}>Payment Terms</span>
-                      <Field
-                        as="select"
-                        className={`${styles.input} ${styles.select}`}
-                        name="paymentTerms"
-                      >
-                        <option value="1">Net 1 Day</option>
-                        <option value="7">Net 7 Days</option>
-                        <option value="14">Net 14 Days</option>
-                        <option value="30">Net 30 Days</option>
-                      </Field>
+                      <div className={styles.parent_select}>
+                        <Field
+                          as="select"
+                          className={`${styles.input} ${styles.select}`}
+                          name="paymentTerms"
+                        >
+                          <option value="1">Net 1 Day</option>
+                          <option value="7">Net 7 Days</option>
+                          <option value="14">Net 14 Days</option>
+                          <option selected="selected" value="30">
+                            Net 30 Days
+                          </option>
+                        </Field>
+                        <img
+                          className={styles.arrowDown}
+                          src={arrowDown}
+                          alt="arrow down"
+                        />
+                      </div>
                     </label>
                   </div>
 
